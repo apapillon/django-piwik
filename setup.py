@@ -4,12 +4,12 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-piwik',
-    version='0.2',
+    version='0.3',
     description='A simple app to add the Piwik JS tracking code to your template.',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     author='Raphael Jasjukaitis, Jørn Åne de Jong',
     author_email='webmaster@raphaa.de, jorn.dejong@uninett.no',
-    url='https://github.com/raphaa/django-piwik',
+    url='https://github.com/apapillon/django-piwik',
     license='BSD License',
     platforms=['OS Independent'],
     packages=find_packages(),
