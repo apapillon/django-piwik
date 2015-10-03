@@ -24,7 +24,30 @@ def _tracking_code():
         error = 'PIWIK_URL does not exist.'
         logging.error(error)
         return {'error': error}
-    return {'id': id_, 'url': url}
+
+    try:
+        without_javascript = settings.PIWIK_WITHOUT_JS
+    except AttributeError:
+        without_javascript = False
+
+    try:
+        set_document_title = settings.PIWIK_SET_DOCUMENT_TITLE
+    except AttributeError:
+        set_document_title = False
+
+    try:
+        do_not_track = settings.PIWIK_SET_DO_NOT_TRACK
+    except AttributeError:
+        do_not_track = False
+
+    try:
+        disable_cookies = settings.PIWIK_DISABLE_COOKIES
+    except AttributeError:
+        disable_cookies = False
+    
+    return {'id': id_, 'url': url, 'setDocumentTitle': set_document_title,
+        'setDoNotTrack': do_not_track, 'disableCookies': disable_cookies,
+        'withoutJS': without_javascript}
 
 
 @register.inclusion_tag('piwik/tracking_code.html')
